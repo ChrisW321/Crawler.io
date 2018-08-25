@@ -37,14 +37,17 @@ export default class CreateCrawl extends Component {
     }
 
     addToCrawl(info) {
-        console.log('addtocrawl called')
         this.state.crawl.push(info);
         this.setState({ crawl: this.state.crawl })
         console.log(this.state.crawl)
     }
 
-    removeFromCrawl() {
-        console.log('remove called')
+    removeFromCrawl(info) {
+        const { crawl } = this.state;
+        console.log('remove called');
+        const index = crawl.indexOf(info);
+        index !== -1 && crawl.splice(index, 1);
+        this.setState({ crawl })
     }
 
     render() {
@@ -56,10 +59,10 @@ export default class CreateCrawl extends Component {
                 </div>
                 <div>
                     <div className="twoHalvesInline">
-                        {businesses.map(business => <Business info={business} addToCrawl={this.addToCrawl.bind(this)} />)}
+                        {businesses.map(business => <Business info={business} addToCrawl={this.addToCrawl.bind(this)} canAdd={true}/>)}
                     </div>
                     <div className="twoHalvesInline" id="newCrawlList">
-                        {crawl.map(business => <Business info={business} removeFromCrawl={this.removeFromCrawl.bind(this)} />)}
+                        {crawl.map(business => <Business info={business} removeFromCrawl={this.removeFromCrawl.bind(this)} canAdd={false}/>)}
                     </div>
                 </div>
             </div>
@@ -67,8 +70,8 @@ export default class CreateCrawl extends Component {
     }
 }
 
-const Business = ({ info, addToCrawl }) => (
-    <div onClick={() => addToCrawl(info)}>
+const Business = ({ info, addToCrawl, removeFromCrawl, canAdd }) => (
+    <div onClick={() => canAdd ? addToCrawl(info) : removeFromCrawl(info)}>
         <div>{info.name}</div>
         <div><img className="businessImage" src={info.image_url} /></div>
     </div>
