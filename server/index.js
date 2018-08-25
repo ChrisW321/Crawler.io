@@ -44,14 +44,24 @@ app.use((req, res, next) =>{
     }).catch(err => res.send(err))
   })
 
+  app.get('/user/pubCrawl/:user', (req, res) => {
+      const { user } = req.params
+      console.log('get users pub crawls called');
+      model.getCrawlsByUser(user, (err, data) => {
+        res.statusCode = err ? 400 : 200
+        res.send(err || data)
+      })
+  })
+
   app.post('/user/pubCrawl', (req,res) => {
-      const crawl = req.body.data;
+      const crawl = req.body;
       console.log('crawls post called, crawl=', crawl)
     model.saveCrawl(crawl, (err, data) => {
         res.statusCode = err ? 400 : 200
         res.send(err || data)
     })
   })
+
   
 
 app.listen(port);

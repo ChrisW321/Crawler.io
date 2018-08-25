@@ -9,7 +9,7 @@ export default class SavedCrawls extends Component {
     }
 
     componentDidMount() {
-        axios.get('/user/pubcrawl')
+        axios.get('/user/pubcrawl/chris')
         .then(res => console.log(res))
         .catch(err => console.log(err))
     }

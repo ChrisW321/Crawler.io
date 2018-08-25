@@ -30,6 +30,7 @@ mongoose.connect(process.env.MONGO, (err, result) => {
 })
 
 const pubCrawlSchema = new mongoose.Schema({
+    user: String,
     pubCrawl: Array
 })
 const PubCrawl = mongoose.model('pubCrawl', pubCrawlSchema)
@@ -37,12 +38,21 @@ const PubCrawl = mongoose.model('pubCrawl', pubCrawlSchema)
 const saveCrawl = (crawl, cb) => {
     console.log(crawl, 'crawl')
     const newPubCrawl = new PubCrawl({
-        pubCrawl: crawl
+        user: crawl.user,
+        pubCrawl: crawl.data,
     })
     newPubCrawl.save();
 }
 
+const getCrawlsByUser = (user, cb) => {
+    console.log(user)
+    PubCrawl.find({ user })
+    .then(data => cb(null, data))
+    .catch(err => cb(err));
+}
+
 
 module.exports = {
-    saveCrawl
+    saveCrawl,
+    getCrawlsByUser,
 };

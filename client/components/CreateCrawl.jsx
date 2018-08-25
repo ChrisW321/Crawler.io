@@ -10,6 +10,7 @@ export default class CreateCrawl extends Component {
             businesses: [],
             input: '',
             crawl: [],
+            user: 'chris'
         }
     }
 
@@ -52,7 +53,8 @@ export default class CreateCrawl extends Component {
 
     savePubCrawl() {
         axios.post(`/user/pubCrawl`, {
-            data: this.state.crawl
+            data: this.state.crawl,
+            user: this.state.user
         })
         .then(res => console.log(res))
         .catch(err => console.error(err));
