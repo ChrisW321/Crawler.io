@@ -2,11 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const yelp = require('yelp-fusion');
 const model = require('./model.js');
+const parser = require('body-parser')
 
 const app = express();
 const port = process.env.PORT || 4075;
 
 app.use('/', express.static('./public'));
+app.use(parser.json());
 
 app.use((req, res, next) =>{
     res.setHeader('Access-Control-Allow-Headers', '*');
@@ -42,9 +44,9 @@ app.use((req, res, next) =>{
     }).catch(err => res.send(err))
   })
 
-  app.post('/user/pubCrawl/:crawl', (req,res) => {
-    console.log('crawls post called')
-    const { crawl } = req.params;
+  app.post('/user/pubCrawl', (req,res) => {
+      const crawl = req.body.data;
+      console.log('crawls post called, crawl=', crawl)
     model.saveCrawl(crawl, (err, data) => {
         res.statusCode = err ? 400 : 200
         res.send(err || data)

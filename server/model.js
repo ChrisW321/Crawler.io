@@ -35,9 +35,9 @@ const pubCrawlSchema = new mongoose.Schema({
 const PubCrawl = mongoose.model('pubCrawl', pubCrawlSchema)
 
 const saveCrawl = (crawl, cb) => {
-    console.log(crawl.data, 'crawl.data')
+    console.log(crawl, 'crawl')
     const newPubCrawl = new PubCrawl({
-        pubCrawl: crawl.data
+        pubCrawl: crawl
     })
     newPubCrawl.save();
 }
