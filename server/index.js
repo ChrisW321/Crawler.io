@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const yelp = require('yelp-fusion');
-
+const model = require('./model.js');
 
 const app = express();
 const port = process.env.PORT || 4075;
@@ -40,6 +40,15 @@ app.use((req, res, next) =>{
     yelpClient.search(searchRequest).then(data => {
         res.send(data);
     }).catch(err => res.send(err))
+  })
+
+  app.post('/user/pubCrawl/:crawl', (req,res) => {
+    console.log('crawls post called')
+    const { crawl } = req.params;
+    model.saveCrawl(crawl, (err, data) => {
+        res.statusCode = err ? 400 : 200
+        res.send(err || data)
+    })
   })
   
 
