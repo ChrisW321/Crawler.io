@@ -30,12 +30,6 @@ app.use((req, res, next) =>{
         }).catch(err => res.send(err))
   })
   
-//   client.search(searchRequest).then(response => {
-//     const firstResult = response.jsonBody.businesses[0];
-//     const prettyJson = JSON.stringify(firstResult, null, 4);
-//     console.log(prettyJson);
-//   }).catch(e => {
-//     console.log(e);
-//   });
+
 app.listen(port);
 console.log(`Listening on port http://127.0.0.1:${port}`)
