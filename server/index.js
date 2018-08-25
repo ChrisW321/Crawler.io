@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const yelp = require('yelp-fusion');
 
 
 const app = express();
@@ -14,20 +15,31 @@ app.use((req, res, next) =>{
     res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET');
     next();
   });
-  const yelp = require('yelp-fusion');
 
   const apiKey = process.env.YELP_API_KEY
-  
   const yelpClient = yelp.client(apiKey);
+
+  const JSONgraphql = `{
+    "query": "business(term: $business_name, location: $location) {
+        name
+        id
+        rating
+        url
+    }",
+    "variables": {
+        "business_name": "garaje-san-francisco",
+        "location": "san francisco, ca"
+    }
+}`
 
   app.get('/yelp/:searchQuery', (req, res) => {
     const searchRequest = {
         term: req.params.searchQuery,
-        location: 'san francisco, ca',
-    }
-        yelpClient.search(searchRequest).then(data => {
-            res.send(data);
-        }).catch(err => res.send(err))
+        location: "san francisco, ca"
+    };
+    yelpClient.search(searchRequest).then(data => {
+        res.send(data);
+    }).catch(err => res.send(err))
   })
   
 
