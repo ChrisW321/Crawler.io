@@ -12,18 +12,31 @@ export default class CreateCrawl extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/yelp`)
-            .then(res => {
-                console.log(res)
-                this.setState({businesses: res.data.jsonBody.businesses})
-                console.log(this.state)
-            })
-            .catch(err => console.error(err))
+        this.searchYelp('tempest')
     }
 
-    changeInput(key) {
-        this.setState({input: key})
+    searchYelp(input) {
+        axios.get(`/yelp/${input}`)
+        .then(res => {
+            console.log(res)
+            this.setState({businesses: res.data.jsonBody.businesses})
+            console.log(this.state)
+        })
+        .catch(err => console.error(err))
+    }
+
+    changeInput(e) {
+        console.log(e.which)
+        if (e.which === 13) {
+            this.handleSubmit()
+        }
+        this.setState({input: e.target.value})
         console.log(this.state.input)
+    }
+
+    handleSubmit() {
+        this.searchYelp(this.state.input);
+        this.setState({input: ''})
     }
 
     render() {
@@ -31,7 +44,7 @@ export default class CreateCrawl extends Component {
         return (
             <div>
                 <div>
-                    <input type="text" onKeyUp={(e) => this.changeInput(e.target.value)}/><button>Search</button>
+                    <input type="text" onKeyUp={(e) => this.changeInput(e)}/><button onClick={() => this.handleSubmit()}>Search</button>
                 </div>
                 {businesses.map(business => <Business info={business}/>)}
             </div>

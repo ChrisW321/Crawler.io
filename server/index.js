@@ -17,18 +17,17 @@ app.use((req, res, next) =>{
   const yelp = require('yelp-fusion');
 
   const apiKey = process.env.YELP_API_KEY
-  const searchRequest = {
-    term:'Temple',
-    location: 'san francisco, ca'
-  };
   
   const yelpClient = yelp.client(apiKey);
 
-  app.get('/yelp', (req, res) => {
-      console.log('get yelp request received')
-      yelpClient.search(searchRequest).then(data => {
-          res.send(data);
-      }).catch(err => res.send(err))
+  app.get('/yelp/:searchQuery', (req, res) => {
+    const searchRequest = {
+        term: req.params.searchQuery,
+        location: 'san francisco, ca',
+    }
+        yelpClient.search(searchRequest).then(data => {
+            res.send(data);
+        }).catch(err => res.send(err))
   })
   
 //   client.search(searchRequest).then(response => {
