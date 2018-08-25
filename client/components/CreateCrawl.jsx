@@ -51,8 +51,11 @@ export default class CreateCrawl extends Component {
     }
 
     savePubCrawl() {
-        axios.post(`/user/pubCrawl/${this.state.crawl}`)
-        alert('Saved')
+        axios.post(`/user/pubCrawl`, {
+            data: this.state.crawl
+        })
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
     }
 
     render() {

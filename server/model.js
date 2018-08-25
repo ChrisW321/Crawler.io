@@ -45,4 +45,4 @@ const saveCrawl = (crawl, cb) => {
 
 module.exports = {
     saveCrawl
-}
+};

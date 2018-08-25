@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import CreateCrawl from './CreateCrawl.jsx';
-
+import SavedCrawls from './SavedCrawls.jsx';
 
 export default class Homepage extends Component {
     constructor(props) {
@@ -14,9 +14,9 @@ export default class Homepage extends Component {
         return (
             <div>
                 <div>
-                    <span>Create A PubCrawl </span>
+                    <span onClick={() => this.setState({ view: <CreateCrawl /> })}>Create A PubCrawl </span>
                     <span>Suggested PubCrawls </span>
-                    <span>Your PubCrawls </span>
+                    <span onClick={() => this.setState({ view: <SavedCrawls /> })}>Your PubCrawls </span>
                     <span>Choose For Me </span>
                 </div>
                 <div>
