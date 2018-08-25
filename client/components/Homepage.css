@@ -3,3 +3,11 @@
     margin: auto;
     margin-top: 3rem;
 }
+.homepageTabs {
+    width: 5rem;
+    height: 3rem;
+    background-color: rgb(43, 228, 235);
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    border-right: 1px solid;
+}

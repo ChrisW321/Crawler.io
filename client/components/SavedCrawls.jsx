@@ -21,7 +21,7 @@ export default class SavedCrawls extends Component {
     render() {
         const { crawls } = this.state;
         return (
-            <div>
+            <div className="SavedCrawlsContainer">
                 {crawls.map((crawl, index) => crawl.pubCrawl.map(business => <Business info={business} index={index}/>))}
             </div>
         )

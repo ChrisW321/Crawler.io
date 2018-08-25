@@ -63,7 +63,7 @@ export default class CreateCrawl extends Component {
     render() {
         const { businesses, crawl } = this.state
         return (
-            <div>
+            <div className="CreateCrawlContainer">
                 <div>
                     <input type="text" onKeyUp={(e) => this.changeInput(e)}/><button onClick={() => this.handleSubmit()}>Search</button>
                 </div>

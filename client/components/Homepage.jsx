@@ -16,10 +16,10 @@ export default class Homepage extends Component {
         return (
             <div className="masterContainer">
                 <div>
-                    <span onClick={() => this.setState({ view: <CreateCrawl /> })}>Create A PubCrawl </span>
-                    <span>Suggested PubCrawls </span>
-                    <span onClick={() => this.setState({ view: <SavedCrawls /> })}>Your PubCrawls </span>
-                    <span onClick={() => this.setState({ view: <PickForMe /> })}><h1>Pick For Me</h1></span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <CreateCrawl /> })}>Create A PubCrawl </span>
+                    <span className="homepageTabs">Suggested PubCrawls </span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <SavedCrawls /> })}>Your PubCrawls </span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <PickForMe /> })}>Pick For Me</span>
                 </div>
                 <div>
                     {this.state.view}

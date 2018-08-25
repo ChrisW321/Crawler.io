@@ -8,3 +8,7 @@
 #newCrawlList {
     vertical-align: top;
 }
+.CreateCrawlContainer {
+    margin: 3rem;
+    text-align: center;
+}
