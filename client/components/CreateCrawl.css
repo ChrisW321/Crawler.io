@@ -5,3 +5,6 @@
 .twoHalvesInline {
     display: inline-block;
 }
+#newCrawlList {
+    vertical-align: top;
+}
