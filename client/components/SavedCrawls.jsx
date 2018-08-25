@@ -29,7 +29,7 @@ export default class SavedCrawls extends Component {
 }
 
 const Business = ({ info, index }) => (
-    <div>PubCrawl#{index}
+    <div>PubCrawl#{index + 1}
         <div>{info.name}</div>
         <div><img className="businessImage" src={info.image_url} /></div>
     </div>
