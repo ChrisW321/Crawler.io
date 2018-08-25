@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import styles from './PickForMe.css';
 
 export default class PickForMe extends Component {
     constructor(props) {
@@ -7,7 +8,7 @@ export default class PickForMe extends Component {
 
     render() {
         return (
-            <div>
+            <div className="PickForMeContainer">
                 Pick for me
                 <div>How lit we gettin?</div>
                 <input type="number" max="5" min="0" />
@@ -18,15 +19,16 @@ export default class PickForMe extends Component {
                 <div>How late we goin?</div>
                 <input type="time" /> */}
                 <div>How long we goin?</div>
-                <input type="number" placeholder="hours"/>
+                <input type="number" max="5" min="0" placeholder="hours"/>
                 <div>Bars? Clubs? Both???</div>
                 <select>
                     <option>Bar</option>
                     <option>Club</option>
                     <option>Both!!!</option>
                 </select>
-
-
+                <div>
+                    <button className="sendItButton">Fuckin' Send It!!!</button>
+                </div>
             </div>
         )
     }

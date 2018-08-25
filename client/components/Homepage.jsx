@@ -2,6 +2,7 @@ import { Component } from 'react';
 import CreateCrawl from './CreateCrawl.jsx';
 import SavedCrawls from './SavedCrawls.jsx';
 import PickForMe from './PickForMe.jsx';
+import styles from './Homepage.css';
 
 export default class Homepage extends Component {
     constructor(props) {
@@ -13,12 +14,12 @@ export default class Homepage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="masterContainer">
                 <div>
                     <span onClick={() => this.setState({ view: <CreateCrawl /> })}>Create A PubCrawl </span>
                     <span>Suggested PubCrawls </span>
                     <span onClick={() => this.setState({ view: <SavedCrawls /> })}>Your PubCrawls </span>
-                    <span onClick={() => this.setState({ view: <PickForMe /> })}><h1>Send It!</h1></span>
+                    <span onClick={() => this.setState({ view: <PickForMe /> })}><h1>Pick For Me</h1></span>
                 </div>
                 <div>
                     {this.state.view}
