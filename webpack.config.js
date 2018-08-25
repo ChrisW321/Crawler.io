@@ -2,7 +2,7 @@ module.exports = {
     context: __dirname + '/client',
     entry: './index.jsx',
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
