@@ -1,29 +1,30 @@
 {
-    "name": "PubCrawler.io",
-    "version": "1.0.0",
-    "description": "Create a pub crawl",
-    "main": "index.jsx",
-    "scripts": {
-        "test": "jest",
-        "build:dev": "webpack --watch --mode development",
-        "build:prod": "webpack --mode production && grunt s3",
-        "start": "nodemon server/index.js"
-      },
-    "author": "Christopher Wildenradt",
-    "license": "ISC",
-    "devDependencies": {
-      "nodemon": "^1.18.3",
-      "babel-core": "^6.26.0",
-      "babel-loader": "^7.1.2",
-      "babel-preset-env": "^1.6.1",
-      "babel-preset-es2015": "^6.24.1",
-      "babel-preset-react": "^6.24.1",
-      "express": "^4.16.2",
-      "jest": "^22.3.0",
-      "react": "^16.2.0",
-      "react-dom": "^16.2.0",
-      "webpack": "^4.0.0"
-    },
-    "dependencies": {
-    }
+  "name": "PubCrawler.io",
+  "version": "1.0.0",
+  "description": "Create a pub crawl",
+  "main": "index.jsx",
+  "scripts": {
+    "test": "jest",
+    "build:dev": "webpack --watch --mode development",
+    "build:prod": "webpack --mode production && grunt s3",
+    "start": "nodemon server/index.js"
+  },
+  "author": "Christopher Wildenradt",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.3",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "express": "^4.16.2",
+    "jest": "^22.3.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^4.0.0"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
   }
+}
