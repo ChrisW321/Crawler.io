@@ -25,6 +25,7 @@
     "webpack": "^4.0.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "path": "^0.12.7"
   }
 }
