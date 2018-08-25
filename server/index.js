@@ -32,7 +32,7 @@ app.use((req, res, next) =>{
         "business_name": "garaje-san-francisco",
         "location": "san francisco, ca"
     }
-}`
+}`;
 
   app.get('/yelp/:searchQuery', (req, res) => {
     const searchRequest = {
