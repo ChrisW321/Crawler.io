@@ -17,9 +17,7 @@ export default class Homepage extends Component {
                     <span>Create A PubCrawl </span>
                     <span>Suggested PubCrawls </span>
                     <span>Your PubCrawls </span>
-                </div>
-                <div>
-                    PubCrawl
+                    <span>Choose For Me </span>
                 </div>
                 <div>
                     {this.state.view}

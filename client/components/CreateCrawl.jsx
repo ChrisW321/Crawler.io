@@ -2,6 +2,7 @@ import { Component } from 'react';
 import axios from 'axios';
 import styles from './CreateCrawl.css';
 
+
 export default class CreateCrawl extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,6 @@ export default class CreateCrawl extends Component {
         .then(res => {
             console.log(res.data)
             this.setState({businesses: res.data.jsonBody.businesses})
-            console.log(this.state)
         })
         .catch(err => console.error(err))
     }
@@ -37,7 +37,7 @@ export default class CreateCrawl extends Component {
     }
 
     addToCrawl(info) {
-        this.state.crawl.push(info);
+        this.state.crawl.push({ name: info.name, image_url: info.image_url });
         this.setState({ crawl: this.state.crawl })
         console.log(this.state.crawl)
     }
@@ -48,6 +48,11 @@ export default class CreateCrawl extends Component {
         const index = crawl.indexOf(info);
         index !== -1 && crawl.splice(index, 1);
         this.setState({ crawl })
+    }
+
+    savePubCrawl() {
+        axios.post(`/user/pubCrawl/${this.state.crawl}`)
+        alert('Saved')
     }
 
     render() {
@@ -61,7 +66,10 @@ export default class CreateCrawl extends Component {
                     <div className="twoHalvesInline">
                         {businesses.map(business => <Business info={business} addToCrawl={this.addToCrawl.bind(this)} canAdd={true}/>)}
                     </div>
+
                     <div className="twoHalvesInline" id="newCrawlList">
+                        Your PubCrawl
+                        <button onClick={() => this.savePubCrawl()}>Create it and Save</button>
                         {crawl.map(business => <Business info={business} removeFromCrawl={this.removeFromCrawl.bind(this)} canAdd={false}/>)}
                     </div>
                 </div>
