@@ -37,6 +37,7 @@
     "path": "^0.12.7",
     "pg": "^7.4.3",
     "react-apollo": "^2.1.11",
+    "react-loading": "^2.0.3",
     "socket.io": "^2.1.1",
     "style-loader": "^0.22.1",
     "yelp-fusion": "^2.0.3"
