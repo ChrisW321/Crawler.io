@@ -25,7 +25,7 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO, (err, result) => {
+mongoose.connect(process.env.MONGO, { useNewUrlParser: true } , (err, result) => {
     if (err) console.error(err);
 })
 
