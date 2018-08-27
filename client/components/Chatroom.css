@@ -1,0 +1,12 @@
+.chatroomContainer {
+    position: relative;
+    top: 100px;
+    left: 800px;
+}
+.chatroomHeader {
+    margin: 3rem;
+    border-bottom: 1px solid;
+}
+#chat {
+    border: none;
+}
