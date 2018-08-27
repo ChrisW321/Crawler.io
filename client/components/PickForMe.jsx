@@ -1,13 +1,23 @@
 import { Component } from 'react';
+import axios from 'axios';
 import styles from './PickForMe.css';
+import { isObject } from 'util';
 
 export default class PickForMe extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            crawls: []
+        }
     }
 
     sendIt() {
-        
+        axios.get('/user/pubcrawl/picked')
+        .then(res => {
+            console.log(res)
+            this.setState({ crawls: res.data })
+        })
+        .catch(err => console.log(err))
     }
 
     render() {

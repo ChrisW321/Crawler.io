@@ -2,6 +2,7 @@ import { Component } from 'react';
 import CreateCrawl from './CreateCrawl.jsx';
 import SavedCrawls from './SavedCrawls.jsx';
 import PickForMe from './PickForMe.jsx';
+import SuggestedCrawls from './SuggestedCrawls.jsx';
 import styles from './Homepage.css';
 
 export default class Homepage extends Component {
@@ -16,9 +17,9 @@ export default class Homepage extends Component {
         return (
             <div className="masterContainer">
                 <div>
-                    <span className="homepageTabs" onClick={() => this.setState({ view: <CreateCrawl /> })}>Create A PubCrawl </span>
-                    <span className="homepageTabs">Suggested PubCrawls </span>
-                    <span className="homepageTabs" onClick={() => this.setState({ view: <SavedCrawls /> })}>Your PubCrawls </span>
+                    <span className="homepageTabs" id="firstHomepageTab" onClick={() => this.setState({ view: <CreateCrawl /> })}>Create A PubCrawl </span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <SuggestedCrawls /> })}>Your Crawls</span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <SavedCrawls /> })}>Suggested PubCrawls </span>
                     <span className="homepageTabs" onClick={() => this.setState({ view: <PickForMe /> })}>Pick For Me</span>
                 </div>
                 <div>
