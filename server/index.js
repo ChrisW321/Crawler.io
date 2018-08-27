@@ -101,5 +101,13 @@ app.get('/yelp/:searchQuery', (req, res) => {
     })
   })
 
+  app.get('/allCrawls', (req, res) => {
+      console.log('allcrawls called');
+      model.getAllCrawls((err, data) => {
+        res.statusCode = err ? 400 : 200
+        res.send(err || data)
+      })
+  })
+
 
   http.listen(4075, () => console.log(`Listening on port http://127.0.0.1:${port}`))

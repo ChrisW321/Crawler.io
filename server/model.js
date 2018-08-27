@@ -1,28 +1,3 @@
-// const { Pool } = require('pg');
-
-// const config = {
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD,
-//     database: process.env.DB_DATABASE,
-// }
-
-// const pool = new Pool(config)
-// pool.connect((err, result) => {
-//     if (err) console.error(err);
-// })
-
-
-// const getSearchResults = function (searchTerm, cb) {
-//     const query = "SELECT * FROM searchlisting WHERE listingId = ANY (VALUES (" + searchTerm + "));";
-//     pool.query(query, (err, result) => {
-//       if (err) {
-//         console.log(err)
-//       } else {
-//         cb(null, result.rows)
-//       }
-//     });
-// };
-
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGO, { useNewUrlParser: true } , (err, result) => {
@@ -51,8 +26,15 @@ const getCrawlsByUser = (user, cb) => {
     .catch(err => cb(err));
 }
 
+const getAllCrawls = (cb) => {
+    PubCrawl.find()
+    .then(data => cb(null, data))
+    .catch(err => console.error(err));
+}
+
 
 module.exports = {
     saveCrawl,
     getCrawlsByUser,
+    getAllCrawls,
 };
