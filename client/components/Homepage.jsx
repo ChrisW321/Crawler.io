@@ -4,6 +4,7 @@ import SavedCrawls from './SavedCrawls.jsx';
 import PickForMe from './PickForMe.jsx';
 import YourCrawls from './SuggestedCrawls.jsx';
 import styles from './Homepage.css';
+import Chatroom from './Chatroom.jsx';
 
 export default class Homepage extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ export default class Homepage extends Component {
     render() {
         return (
             <div className="masterContainer">
-                <div>
+                <div className="twoHalvesInline">
                     <span 
                         className="homepageTabs" 
                         id="firstHomepageTab" 
@@ -32,6 +33,7 @@ export default class Homepage extends Component {
                     <span className="homepageTabs" onClick={() => this.setState({ view: <SavedCrawls /> })}>Suggested PubCrawls </span>
                     <span className="homepageTabs" onClick={() => this.setState({ view: <PickForMe /> })}>Pick For Me</span>
                 </div>
+                    <Chatroom />
                 <div>
                     {this.state.view}
                 </div>

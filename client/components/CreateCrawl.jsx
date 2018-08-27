@@ -10,7 +10,7 @@ export default class CreateCrawl extends Component {
             businesses: [],
             input: '',
             crawl: [],
-            user: 'chris',
+            user: 'Chris',
             usernameInput: '',
         }
     }

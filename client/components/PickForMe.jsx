@@ -9,7 +9,7 @@ export default class PickForMe extends Component {
         this.state = {
             crawls: [],
             loading: false,
-            loader: <Loader type={'spin'} color={'blue'} height={300} width={300}/>,
+            loader: <div className="loaderCentering"><Loader type={'spin'} color={'blue'} height={200} width={200}/></div>,
             view: <MainView sendIt={this.sendIt.bind(this)}/>,
         }
     }
@@ -20,7 +20,7 @@ export default class PickForMe extends Component {
         .then(res => {
             console.log(res)
             this.setState({ crawls: res.data }, () => {
-                setTimeout(() => this.setState({ view: <DisplayCrawls crawls={this.state.crawls}/> }), 1000)
+                setTimeout(() => this.setState({ view: <DisplayCrawls crawls={this.state.crawls}/> }), 2000)
             })
         })
         .catch(err => console.log(err))
@@ -38,11 +38,11 @@ export default class PickForMe extends Component {
 const MainView = ({ sendIt }) => (
     <div className="PickForMeContainer">
         <div className="inputHeader">How lit we gettin?</div>
-        <input className="PickForMeInput" type="number" max="5" min="0" placeholder="0-5"/>
+        <input className="PickForMeInput" type="number" max="5" min="0" placeholder="0-5" required="true"/>
         <div className="inputHeader">How bougie we gettin?</div>
-        <input className="PickForMeInput" type="number" max="5" min="0" placeholder="0-5"/>
+        <input className="PickForMeInput" type="number" max="5" min="0" placeholder="0-5" required="true"/>
         <div className="inputHeader">How long we goin?</div>
-        <input className="PickForMeInput" type="number" max="5" min="0" placeholder="hours"/>
+        <input className="PickForMeInput" type="number" max="5" min="0" placeholder="hours" required="true"/>
         <div className="inputHeader">Bars? Clubs? Both???</div>
         <select>
             <option>Bar</option>
@@ -60,7 +60,7 @@ const DisplayCrawls = ({ crawls }) => (
         {crawls.reverse().map((crawl, index) => {
             return (
                 <div>
-                    <span className="textInlineWithImage">#{index}&nbsp;&nbsp;</span>
+                    <span className="textInlineWithImage">#{index + 1}&nbsp;&nbsp;</span>
                     {crawl.pubCrawl.map((business, index) => <Business info={business} index={index}/>)}
                 </div>
             )
@@ -71,7 +71,7 @@ const DisplayCrawls = ({ crawls }) => (
 const Business = ({ info, index }) => (
     <span>
         <div className="inlineBlock">
-                <div className="textInlineWithImage">{index + 1} {info.name}&nbsp;</div>
+                <div className="textInlineWithImage">{index + 1}. {info.name}&nbsp;</div>
         </div>
         <div className="inlineBlock">
             <img className="businessImage" src={info.image_url} /> 
