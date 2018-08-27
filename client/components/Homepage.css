@@ -11,6 +11,7 @@
     margin: auto;
     padding: 1rem;
     border-right: 1px solid;
+    cursor: pointer;
 }
 #firstHomepageTab {
     margin-left: 10rem;

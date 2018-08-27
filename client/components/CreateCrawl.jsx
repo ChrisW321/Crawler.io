@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
 import styles from './CreateCrawl.css';
-import { isObject } from 'util';
 
 
 export default class CreateCrawl extends Component {
@@ -30,7 +29,8 @@ export default class CreateCrawl extends Component {
     }
 
     changeInput(e, type) {
-        e.which === 13 && type === 'search' && this.handleSubmit()
+        e.which === 13 && type === 'search' && this.handleSubmit();
+        e.which === 13 && type === 'user' && this.setUser();
         type === 'search' ? this.setState({ input: e.target.value }) : this.setState({ usernameInput: e.target.value })
     }
 
@@ -38,7 +38,8 @@ export default class CreateCrawl extends Component {
         this.setState({ 
             user: this.state.usernameInput,
             usernameInput: '',
-        })
+        }, () => this.props.updateUser(this.state.user))
+
     }
 
     handleSubmit() {
