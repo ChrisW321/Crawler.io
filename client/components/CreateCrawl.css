@@ -1,9 +1,11 @@
 .businessImage {
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10%;
 }
 .twoHalvesInline {
     display: inline-block;
+    text-align: left;
 }
 #newCrawlList {
     vertical-align: top;
@@ -11,4 +13,13 @@
 .CreateCrawlContainer {
     margin: 3rem;
     text-align: center;
+}
+.CreateSearchContainer {
+    margin: 3rem;
+}
+.leftText {
+    margin: 2rem;
+}
+.BusinessContainer {
+    padding: 1rem;
 }

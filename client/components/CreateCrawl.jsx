@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 import styles from './CreateCrawl.css';
+import { isObject } from 'util';
 
 
 export default class CreateCrawl extends Component {
@@ -10,12 +11,13 @@ export default class CreateCrawl extends Component {
             businesses: [],
             input: '',
             crawl: [],
-            user: 'chris'
+            user: 'chris',
+            usernameInput: '',
         }
     }
 
     componentDidMount() {
-        this.searchYelp('tempest')
+        // this.searchYelp('tempest')
     }
 
     searchYelp(input) {
@@ -27,9 +29,16 @@ export default class CreateCrawl extends Component {
         .catch(err => console.error(err))
     }
 
-    changeInput(e) {
-        e.which === 13 && this.handleSubmit()
-        this.setState({ input: e.target.value })
+    changeInput(e, type) {
+        e.which === 13 && type === 'search' && this.handleSubmit()
+        type === 'search' ? this.setState({ input: e.target.value }) : this.setState({ usernameInput: e.target.value })
+    }
+
+    setUser() {
+        this.setState({ 
+            user: this.state.usernameInput,
+            usernameInput: '',
+        })
     }
 
     handleSubmit() {
@@ -52,6 +61,8 @@ export default class CreateCrawl extends Component {
     }
 
     savePubCrawl() {
+        const socket = io();
+        socket.emit('crawl saved', this.state.crawl)
         axios.post(`/user/pubCrawl`, {
             data: this.state.crawl,
             user: this.state.user
@@ -64,17 +75,26 @@ export default class CreateCrawl extends Component {
         const { businesses, crawl } = this.state
         return (
             <div className="CreateCrawlContainer">
-                <div>
-                    <input type="text" onKeyUp={(e) => this.changeInput(e)}/><button onClick={() => this.handleSubmit()}>Search</button>
+                <span className="CreateSearchContainer">
+                    <input type="text" size="30" onKeyUp={(e) => this.changeInput(e, 'user')} placeholder="Set your username"/>
+                    <button onClick={() => this.setUser()}>Set Username</button>
+                    <span> Current User: {this.state.user}</span>
+                </span>
+                <div className="CreateSearchContainer">
+                    <input type="text" size="60" onKeyUp={(e) => this.changeInput(e, 'search')} placeholder="Search for your favorite places"/>
+                    <button onClick={() => this.handleSubmit()}>Search</button>
                 </div>
                 <div>
-                    <div className="twoHalvesInline">
+                    <div className="leftText">Select Your Places</div>
+                    <div className="twoHalvesInline" id="newCrawlList">
                         {businesses.map(business => <Business info={business} addToCrawl={this.addToCrawl.bind(this)} canAdd={true}/>)}
                     </div>
 
                     <div className="twoHalvesInline" id="newCrawlList">
-                        Your PubCrawl
-                        <button onClick={() => this.savePubCrawl()}>Create it and Save</button>
+                        <div>Your PubCrawl</div>
+                        <div>
+                            <button onClick={() => this.savePubCrawl()}>Create it and Save</button>
+                        </div>
                         {crawl.map(business => <Business info={business} removeFromCrawl={this.removeFromCrawl.bind(this)} canAdd={false}/>)}
                     </div>
                 </div>
@@ -84,7 +104,7 @@ export default class CreateCrawl extends Component {
 }
 
 const Business = ({ info, addToCrawl, removeFromCrawl, canAdd }) => (
-    <div onClick={() => canAdd ? addToCrawl(info) : removeFromCrawl(info)}>
+    <div className="BusinessContainer" onClick={() => canAdd ? addToCrawl(info) : removeFromCrawl(info)}>
         <div>{info.name}</div>
         <div><img className="businessImage" src={info.image_url} /></div>
     </div>
