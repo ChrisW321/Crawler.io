@@ -16,6 +16,10 @@ io.on('connection', function(socket){
         console.log('crawl saved called data=', data)
         io.emit('crawl saved', data)
     })
+    socket.on('chat sent', (data) => {
+        console.log('chat sent called data=', data)
+        io.emit('chat sent', data)
+    })
     socket.on('disconnect', function(){
       console.log('user disconnected');
     });
