@@ -1,0 +1,18 @@
+.PickForMeContainer {
+    /* background-color: azure; */
+    margin: auto;
+    text-align: center;
+}
+.sendItButton {
+    width: 10rem;
+    height: 5rem;
+    margin: 3rem;
+}
+.inputHeader {
+    margin: 3rem;
+}
+.PickForMeInput {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 15%;
+}

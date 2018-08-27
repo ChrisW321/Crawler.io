@@ -26,12 +26,18 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "apollo-boost": "^0.1.14",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "css-loader": "^1.0.0",
     "dotenv": "^6.0.0",
     "graphql": "^0.13.2",
+    "mongoose": "^5.2.9",
     "path": "^0.12.7",
+    "pg": "^7.4.3",
+    "react-apollo": "^2.1.11",
+    "socket.io": "^2.1.1",
     "style-loader": "^0.22.1",
     "yelp-fusion": "^2.0.3"
   },

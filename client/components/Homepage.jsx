@@ -1,25 +1,26 @@
 import { Component } from 'react';
 import CreateCrawl from './CreateCrawl.jsx';
-
+import SavedCrawls from './SavedCrawls.jsx';
+import PickForMe from './PickForMe.jsx';
+import SuggestedCrawls from './SuggestedCrawls.jsx';
+import styles from './Homepage.css';
 
 export default class Homepage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: <CreateCrawl />,
+            view: <PickForMe />,
         }
     }
 
     render() {
         return (
-            <div>
+            <div className="masterContainer">
                 <div>
-                    <span>Create A PubCrawl </span>
-                    <span>Suggested PubCrawls </span>
-                    <span>Your PubCrawls </span>
-                </div>
-                <div>
-                    PubCrawl
+                    <span className="homepageTabs" id="firstHomepageTab" onClick={() => this.setState({ view: <CreateCrawl /> })}>Create A PubCrawl </span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <SuggestedCrawls /> })}>Your Crawls</span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <SavedCrawls /> })}>Suggested PubCrawls </span>
+                    <span className="homepageTabs" onClick={() => this.setState({ view: <PickForMe /> })}>Pick For Me</span>
                 </div>
                 <div>
                     {this.state.view}
