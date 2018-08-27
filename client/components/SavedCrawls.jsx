@@ -17,7 +17,7 @@ export default class SavedCrawls extends Component {
             console.log(this.state.crawls);
             this.setState({ crawls: this.state.crawls })
         });
-        axios.get('/user/pubcrawl/chris')
+        axios.get('/allCrawls')
         .then(res => {
             console.log(res)
             this.setState({ crawls: res.data })
@@ -33,7 +33,7 @@ export default class SavedCrawls extends Component {
                     return (
                         <div>
                             <span className="textInlineWithImage">#{index}&nbsp;&nbsp;</span>
-                            {crawl.pubCrawl.map(business => <Business info={business} />)}
+                            {crawl.pubCrawl.map((business, index) => <Business info={business} index={index}/>)}
                         </div>
                     )
                 })}
@@ -42,16 +42,15 @@ export default class SavedCrawls extends Component {
     }
 }
 
-const Business = ({ info }) => (
+const Business = ({ info, index }) => (
     <span>
         <div className="inlineBlock">
-                <div className="textInlineWithImage">{info.name}&nbsp;</div>
+                <div className="textInlineWithImage">{index + 1} {info.name}&nbsp;</div>
         </div>
         <div className="inlineBlock">
             <img className="businessImage" src={info.image_url} /> 
         </div>
         <div className="inlineBlock">
-        <div className="textInlineWithImage">=></div>
         </div>
 
     </span>
