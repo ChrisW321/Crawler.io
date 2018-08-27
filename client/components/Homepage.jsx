@@ -11,12 +11,25 @@ export default class Homepage extends Component {
         super(props);
         this.state = {
             view: <PickForMe />,
-            user: 'chris'
+            user: 'Chris',
+            usernameInput: '',
         }
     }
 
     updateUser(user) {
         this.setState({ user }, () => console.log(this.state.user))
+    }
+
+    changeInput(e, type) {
+        e.which === 13 && type === 'user' && this.setUser();
+        this.setState({ usernameInput: e.target.value })
+    }
+
+    setUser() {
+        this.setState({ 
+            user: this.state.usernameInput,
+            usernameInput: '',
+        })
     }
 
     render() {
@@ -32,8 +45,14 @@ export default class Homepage extends Component {
                     <span className="homepageTabs" onClick={() => this.setState({ view: <YourCrawls user={this.state.user}/> })}>Your Crawls</span>
                     <span className="homepageTabs" onClick={() => this.setState({ view: <SavedCrawls /> })}>Suggested PubCrawls </span>
                     <span className="homepageTabs" onClick={() => this.setState({ view: <PickForMe /> })}>Pick For Me</span>
+
                 </div>
-                    <Chatroom />
+                    <Chatroom user={this.state.user}/>
+                    <span className="setUsernameContainer">
+                        <input className="twoHalvesInline" type="text" size="30" onKeyUp={(e) => this.changeInput(e, 'user')} placeholder="Set your username"/>
+                        <button className="twoHalvesInline" onClick={() => this.setUser()}>Set Username</button>
+                        <span> Current User: {this.state.user}</span>
+                    </span>
                 <div>
                     {this.state.view}
                 </div>

@@ -10,8 +10,7 @@ export default class CreateCrawl extends Component {
             businesses: [],
             input: '',
             crawl: [],
-            user: 'Chris',
-            usernameInput: '',
+            user: this.props.user,
         }
     }
 
@@ -30,16 +29,7 @@ export default class CreateCrawl extends Component {
 
     changeInput(e, type) {
         e.which === 13 && type === 'search' && this.handleSubmit();
-        e.which === 13 && type === 'user' && this.setUser();
         type === 'search' ? this.setState({ input: e.target.value }) : this.setState({ usernameInput: e.target.value })
-    }
-
-    setUser() {
-        this.setState({ 
-            user: this.state.usernameInput,
-            usernameInput: '',
-        }, () => this.props.updateUser(this.state.user))
-
     }
 
     handleSubmit() {
@@ -76,11 +66,6 @@ export default class CreateCrawl extends Component {
         const { businesses, crawl } = this.state
         return (
             <div className="CreateCrawlContainer">
-                <span className="CreateSearchContainer">
-                    <input type="text" size="30" onKeyUp={(e) => this.changeInput(e, 'user')} placeholder="Set your username"/>
-                    <button onClick={() => this.setUser()}>Set Username</button>
-                    <span> Current User: {this.state.user}</span>
-                </span>
                 <div className="CreateSearchContainer">
                     <input type="text" size="60" onKeyUp={(e) => this.changeInput(e, 'search')} placeholder="Search for your favorite places"/>
                     <button onClick={() => this.handleSubmit()}>Search</button>
