@@ -16,7 +16,7 @@ export default class Chatroom extends Component {
 
     componentDidMount() {
         this.socket.on('chat sent', (data) => {
-            this.state.chats.push( data );
+            this.state.chats.unshift( data );
             console.log(this.state.chats);
             this.setState({ chats: this.state.chats })
         });
