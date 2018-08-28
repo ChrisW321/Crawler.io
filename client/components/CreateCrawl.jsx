@@ -68,7 +68,7 @@ export default class CreateCrawl extends Component {
             <div className="CreateCrawlContainer">
                 <div className="CreateSearchContainer">
                     <input type="text" size="60" onKeyUp={(e) => this.changeInput(e, 'search')} placeholder="Search for your favorite places"/>
-                    <button onClick={() => this.handleSubmit()}>Search</button>
+                    {/* <button onClick={() => this.handleSubmit()}>Search</button> */}
                 </div>
                 <div>
                     <div className="leftText">Select Your Places</div>

@@ -45,8 +45,8 @@ const MainView = ({ sendIt }) => (
         <input className="PickForMeInput" type="number" max="5" min="0" placeholder="hours" required="true"/>
         <div className="inputHeader">Bars? Clubs? Both???</div>
         <select>
-            <option>Bar</option>
-            <option>Club</option>
+            <option>Bars</option>
+            <option>Clubs</option>
             <option>Both!!!</option>
         </select>
         <div>

@@ -49,9 +49,8 @@ export default class Homepage extends Component {
                 </div>
                     <Chatroom user={this.state.user}/>
                     <span className="setUsernameContainer">
-                        <input className="twoHalvesInline" type="text" size="30" onKeyUp={(e) => this.changeInput(e, 'user')} placeholder="Set your username"/>
-                        <button className="twoHalvesInline" onClick={() => this.setUser()}>Set Username</button>
                         <span> Current User: {this.state.user}</span>
+                        <input className="twoHalvesInline" type="text" size="30" onKeyUp={(e) => this.changeInput(e, 'user')} placeholder="Set your username"/>
                     </span>
                 <div>
                     {this.state.view}

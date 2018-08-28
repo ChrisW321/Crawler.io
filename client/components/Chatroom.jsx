@@ -7,7 +7,7 @@ export default class Chatroom extends Component {
         this.state = {
             chats: [{
                 username: 'Hanjoon',
-                msg: 'This crawl is lit Brah!!!'
+                msg: 'This crawl is lit Brah!!!',
             }],
             msg: '',
         }
@@ -42,8 +42,8 @@ export default class Chatroom extends Component {
             <div className="chatroomContainer">
                 <div className="chatroomHeader">
                     Chat Room 
-                    <input type="text" onKeyUp={(e) => this.updateMsg(e)}/>
-                    <button onClick={() => this.sendMsg()}>Send It!</button></div>
+                    <input type="text" onKeyUp={(e) => this.updateMsg(e)} placeholder="Send a msg"/>
+                </div>
                 {this.state.chats.map(chat => <Chat chat={chat}/> )}
             </div>
         )
