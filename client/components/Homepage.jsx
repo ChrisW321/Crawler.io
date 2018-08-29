@@ -10,7 +10,7 @@ export default class Homepage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: <PickForMe />,
+            view: <CreateCrawl updateUser={this.updateUser.bind(this)} user={'Chris'}/>,
             user: 'Chris',
             usernameInput: '',
         }
