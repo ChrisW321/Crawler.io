@@ -37,11 +37,11 @@ export default class PickForMe extends Component {
 
 const MainView = ({ sendIt }) => (
     <div className="PickForMeContainer">
-        <div className="inputHeader">How lit we gettin?</div>
+        <div className="inputHeader">How much fun?</div>
         <input className="PickForMeInput" type="number" max="5" min="0" placeholder="0-5" required="true"/>
-        <div className="inputHeader">How bougie we gettin?</div>
+        <div className="inputHeader">How bougie we getting?</div>
         <input className="PickForMeInput" type="number" max="5" min="0" placeholder="0-5" required="true"/>
-        <div className="inputHeader">How long we goin?</div>
+        <div className="inputHeader">How long we going?</div>
         <input className="PickForMeInput" type="number" max="5" min="0" placeholder="hours" required="true"/>
         <div className="inputHeader">Bars? Clubs? Both???</div>
         <select>
