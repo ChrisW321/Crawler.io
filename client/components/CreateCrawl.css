@@ -23,6 +23,6 @@
 .BusinessContainer {
     padding: 1rem;
 }
-.loaderCentering {
-
+#createCrawlSearch {
+    width: 200px;
 }
