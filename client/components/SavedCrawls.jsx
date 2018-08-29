@@ -32,7 +32,7 @@ export default class SavedCrawls extends Component {
                 {crawls.reverse().map((crawl, index) => {
                     return (
                         <div>
-                            <span className="textInlineWithImage">#{index}&nbsp;&nbsp;</span>
+                            <span className="textInlineWithImage">#{index + 1}&nbsp;&nbsp;</span>
                             {crawl.pubCrawl.map((business, index) => <Business info={business} index={index}/>)}
                         </div>
                     )
