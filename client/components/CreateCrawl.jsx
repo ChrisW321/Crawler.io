@@ -15,7 +15,7 @@ export default class CreateCrawl extends Component {
     }
 
     componentDidMount() {
-        // this.searchYelp('tempest')
+        this.searchYelp('tempest')
     }
 
     searchYelp(input) {
@@ -67,8 +67,7 @@ export default class CreateCrawl extends Component {
         return (
             <div className="CreateCrawlContainer">
                 <div className="CreateSearchContainer">
-                    <input type="text" size="60" onKeyUp={(e) => this.changeInput(e, 'search')} placeholder="Search for your favorite places"/>
-                    {/* <button onClick={() => this.handleSubmit()}>Search</button> */}
+                    <input type="text" id="createCrawlSearch" onKeyUp={(e) => this.changeInput(e, 'search')} placeholder="Search for your favorite places"/>
                 </div>
                 <div>
                     <div className="leftText">Select Your Places</div>
