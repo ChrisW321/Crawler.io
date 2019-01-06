@@ -1,4 +1,4 @@
 import ReactDOM from 'react-dom';
-import Login from './components/Login.jsx';
+import PhysicianCalendar from './components/PhysicianCalendar.jsx';
 
-ReactDOM.render(<Login />, document.getElementById('PubCrawler'));
+ReactDOM.render(<PhysicianCalendar />, document.getElementById('PhysicianCalendar'));
